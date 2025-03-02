@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مشاهدة الفيلم - AsiRama</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <nav class="bg-gray-800 p-4 flex justify-between items-center">
+        <h1 class="text-3xl font-bold">🎬 AsiRama</h1>
+        <a href="index.html" class="text-blue-400">الرجوع للقائمة</a>
+    </nav>
+
+    <div class="p-6 text-center">
+        <h2 id="movieTitle" class="text-3xl mb-4"></h2>
+        <img id="movieImage" class="rounded mx-auto mb-4" width="300">
+        <p id="movieDesc" class="mb-4">هذا وصف مبدئي للفيلم.</p>
+        
+        <video width="80%" controls class="mx-auto">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            المتصفح الخاص بك لا يدعم تشغيل الفيديو.
+        </video>
+    </div>
+
+    <script>
+        // استدعاء بيانات الفيلم بناءً على الـ ID
+        const params = new URLSearchParams(window.location.search);
+        const movieId = params.get("id");
+
+        const movies = {
+            1: { title: "فيلم 1", image: "https://via.placeholder.com/300x450" },
+            2: { title: "فيلم 2", image: "https://via.placeholder.com/300x450" },
+            3: { title: "فيلم 3", image: "https://via.placeholder.com/300x450" },
+            4: { title: "فيلم 4", image: "https://via.placeholder.com/300x450" }
+        };
+
+        if (movies[movieId]) {
+            document.getElementById("movieTitle").innerText = movies[movieId].title;
+            document.getElementById("movieImage").src = movies[movieId].image;
+        }
+    </script>
+
+</body>
+</html>
