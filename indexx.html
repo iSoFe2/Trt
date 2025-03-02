@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AsiRama - أفلام ومسلسلات</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <!-- Navbar -->
+    <nav class="bg-gray-800 p-4 flex justify-between items-center">
+        <h1 class="text-3xl font-bold">🎬 AsiRama</h1>
+        <input type="text" id="searchInput" placeholder="ابحث عن فيلم..." class="p-2 rounded bg-gray-700 text-white">
+    </nav>
+
+    <!-- قائمة الأفلام -->
+    <div class="p-6">
+        <h2 class="text-2xl mb-4">🎥 أحدث الأفلام</h2>
+        <div id="moviesContainer" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <!-- الأفلام ستتم إضافتها هنا تلقائيًا -->
+        </div>
+    </div>
+
+    <script>
+        // قائمة أفلام تجريبية
+        const movies = [
+            { title: "فيلم 1", image: "https://via.placeholder.com/300x450", id: 1 },
+            { title: "فيلم 2", image: "https://via.placeholder.com/300x450", id: 2 },
+            { title: "فيلم 3", image: "https://via.placeholder.com/300x450", id: 3 },
+            { title: "فيلم 4", image: "https://via.placeholder.com/300x450", id: 4 }
+        ];
+
+        // عرض الأفلام في الصفحة الرئيسية
+        const container = document.getElementById("moviesContainer");
+        movies.forEach(movie => {
+            const movieCard = document.createElement("div");
+            movieCard.className = "bg-gray-800 p-4 rounded text-center";
+            movieCard.innerHTML = `<img src="${movie.image}" class="rounded mb-2">
+                                   <h3 class="text-lg">${movie.title}</h3>
+                                   <a href="movie.html?id=${movie.id}" class="text-blue-400">شاهد الآن</a>`;
+            container.appendChild(movieCard);
+        });
+
+        // البحث عن الأفلام
+        document.getElementById("searchInput").addEventListener("input", (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            document.querySelectorAll("#moviesContainer div").forEach(card => {
+                card.style.display = card.innerText.toLowerCase().includes(searchTerm) ? "block" : "none";
+            });
+        });
+    </script>
+
+</body>
+</html>
